@@ -1,0 +1,52 @@
+{
+  "name": "@cooltix/dev-test-backend",
+  "version": "1.0.0",
+  "description": "Cooltix Node.js test",
+  "author": "Kemény Boldi <boldi@cooltix.hu>",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "NODE_ENV=test jest --passWithNoTests src",
+    "build": "babel src -d build",
+    "lint": "eslint src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "nodemon": "^2.0.1",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.9.13",
+    "chalk": "^3.0.0",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "lodash.merge": "^4.6.2",
+    "mongodb-memory-server": "^6.0.2",
+    "mongoose": "^5.8.0"
+  }
+}
